@@ -8,4 +8,4 @@ Exercício baseado nas explicações do professor e em códigos disponibilizados
 0.1 - A versão inicial na qual deve se basear o exercício é o código **salvalle.c**, que deve ser compilado com o comado *$make salvalle.x* e na sequência será gerado o executável correspondente. Após execução será gerado um arquivo **teste.bmp**, no qual poderá ser visualizada a figura gráfica gerada.
 
 ### Autores
-Douglas Azevedo Pereira Dantas - Estudante de Engenharia de Controle e Automação (UPE - POLI) e Técnico Intregrado em Eletrônica (IFPE - Recife).
+Douglas Azevedo Pereira Dantas - Estudante de Engenharia de Controle e Automação (UPE - POLI) e Técnico Integrado em Eletrônica (IFPE - Recife).
