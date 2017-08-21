@@ -1,6 +1,6 @@
 /***************************************************************************
- *   Copyright (C) 2005, 2015 by Dr.Beco                                   *
- *   rcb@beco.cc                                                           *
+ *   Copyright (C) 2017 by Douglas Azevedo Pereira Dantas                  *
+ *   douglasazevedo839@gmail.com                                           *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -18,10 +18,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-/* Template para programa basico Allegro
- * que salva uma imagem em arquivo
- *
- * Para compilar use:
+/* Para compilar use:
  *     $gcc salvalle.c -o salvalle.x -Wall `allegro-config --cflags --libs`
  */
 
@@ -36,40 +33,42 @@
 #define CORAMARELO (makecol(255,255,100))
 #define CORVERMELHO (makecol(255, 0, 0))
 
-#define IMAGENAME "teste.bmp" /* nome do arquivo de imagem */
+#define IMAGENAME "ex1.bmp" /* nome do arquivo de imagem */
 
 #include <stdio.h>
 #include <allegro.h>
 
 int main(void)
 {
-  BITMAP *buff;
-  PALETTE pal;
+    BITMAP *buff;
+    PALETTE pal;
 
-  if(install_allegro(SYSTEM_NONE, &errno, atexit)!=0)
-    exit(EXIT_FAILURE);
+    if(install_allegro(SYSTEM_NONE, &errno, atexit)!=0)
+        exit(EXIT_FAILURE);
 
-  set_color_depth(16);
-  get_palette(pal);
+    set_color_depth(16);
+    get_palette(pal);
 
-  // Create a buffer for smooth animation.
-  buff = create_bitmap(320,240);
-  if(buff == NULL)
-  {
-    printf("Could not create buffer!\n");
-    exit(EXIT_FAILURE);
-  }
+    // Create a buffer for smooth animation.
+    buff = create_bitmap(360,360);
+    if(buff == NULL)
+    {
+        printf("Could not create buffer!\n");
+        exit(EXIT_FAILURE);
+    }
 
-  circle(buff, 160, 120, 100, CORAMARELO);
-  textprintf_ex(buff, font, 50, 50, CORVERDE, CORPRETO, "Teste do circulo.");
+    triangle(buff, 90, 30, 270, 30, 180, 120, CORBRANCO);
+    circle(buff, 180, 60, 30, CORBRANCO);
+    vline(buff, 180, 30, 120, CORBRANCO);
+    textprintf_ex(buff, font, 1, 15, CORVERDE, CORPRETO, "TOGETHER THEY MAKE ONE MASTER OF DEATH");
 
-  save_bitmap(IMAGENAME, buff, pal);
-  destroy_bitmap(buff);
-  allegro_exit();
-  
-  printf("Imagem %s salva com sucesso!\n", IMAGENAME);
+    save_bitmap(IMAGENAME, buff, pal);
+    destroy_bitmap(buff);
+    allegro_exit();
 
-  return EXIT_SUCCESS;
+    printf("Imagem %s salva com sucesso!\n", IMAGENAME);
+
+    return EXIT_SUCCESS;
 }
 END_OF_MAIN()
 
