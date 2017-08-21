@@ -62,9 +62,9 @@ int main(void)
         exit(EXIT_FAILURE);
     }
 
-    linetriangle(buff, 90, 30, 270, 30, 180, 110, CORBRANCO);
-    circle(buff, 180, 60, 29, CORBRANCO);
-    vline(buff, 180, 30, 110, CORBRANCO);
+    linetriangle(buff, 60, 30, 300, 30, 180, 190, CORBRANCO);
+    circle(buff, 180, 90, 60, CORBRANCO);
+    vline(buff, 180, 30, 190, CORBRANCO);
     textprintf_ex(buff, font, 1, 1, CORBRANCO, CORPRETO, "TOGETHER THEY MAKE ONE MASTER OF DEATH");
 //    textout_centre(buff, font, "TOGETHER THEY MAKE ONE MASTER OF DEATH", 1, 1, CORBRANCO); 
 
