@@ -57,10 +57,14 @@ int main(void)
         exit(EXIT_FAILURE);
     }
 
-    triangle(buff, 90, 30, 270, 30, 180, 120, CORBRANCO);
+//    triangle(buff, 90, 30, 270, 30, 180, 120, CORBRANCO);
+    hline(buff, 90, 30, 270, CORBRANCO);
+    line(buff, 90, 30, 180, 120, CORBRANCO);
+    line(buff, 180, 120, 270, 30, CORBRANCO);
     circle(buff, 180, 60, 30, CORBRANCO);
     vline(buff, 180, 30, 120, CORBRANCO);
-    textprintf_ex(buff, font, 1, 15, CORVERDE, CORPRETO, "TOGETHER THEY MAKE ONE MASTER OF DEATH");
+    textprintf_ex(buff, font, 1, 1, CORBRANCO, CORPRETO, "TOGETHER THEY MAKE ONE MASTER OF DEATH");
+//    textout_centre(buff, font, "TOGETHER THEY MAKE ONE MASTER OF DEATH", 1, 1, CORBRANCO); 
 
     save_bitmap(IMAGENAME, buff, pal);
     destroy_bitmap(buff);
