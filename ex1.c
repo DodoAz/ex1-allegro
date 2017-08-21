@@ -36,7 +36,7 @@
 #define IMAGENAME "ex1.bmp" /* nome do arquivo de imagem */
 
 #define WIDTH 360
-#define HEIGHT 360
+#define HEIGHT 200
 
 #include <stdio.h>
 #include <allegro.h>
@@ -62,10 +62,10 @@ int main(void)
         exit(EXIT_FAILURE);
     }
 
-    linetriangle(buff, 60, 30, 300, 30, 180, 190, CORBRANCO);
-    circle(buff, 180, 90, 60, CORBRANCO);
-    vline(buff, 180, 30, 190, CORBRANCO);
-    textprintf_ex(buff, font, 1, 1, CORBRANCO, CORPRETO, "TOGETHER THEY MAKE ONE MASTER OF DEATH");
+    linetriangle(buff, 60, HEIGHT-30, 300, HEIGHT-30, 180, HEIGHT-190, CORBRANCO);
+    circle(buff, 180, HEIGHT-90, 60, CORBRANCO);
+    vline(buff, 180, HEIGHT-30, HEIGHT-190, CORBRANCO);
+    textprintf_ex(buff, font, 1, HEIGHT-20, CORBRANCO, CORPRETO, "    TOGETHER THEY MAKE ONE MASTER OF DEATH");
 //    textout_centre(buff, font, "TOGETHER THEY MAKE ONE MASTER OF DEATH", 1, 1, CORBRANCO); 
 
     save_bitmap(IMAGENAME, buff, pal);
