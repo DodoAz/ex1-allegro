@@ -35,8 +35,13 @@
 
 #define IMAGENAME "ex1.bmp" /* nome do arquivo de imagem */
 
+#define WIDTH 360
+#define HEIGHT 360
+
 #include <stdio.h>
 #include <allegro.h>
+
+void linetriangle(BITMAP *bmp, int x1, int y1, int x2, int y2, int x3, int y3, int color);
 
 int main(void)
 {
@@ -50,19 +55,16 @@ int main(void)
     get_palette(pal);
 
     // Create a buffer for smooth animation.
-    buff = create_bitmap(360,360);
+    buff = create_bitmap(WIDTH, HEIGHT);
     if(buff == NULL)
     {
         printf("Could not create buffer!\n");
         exit(EXIT_FAILURE);
     }
 
-//    triangle(buff, 90, 30, 270, 30, 180, 120, CORBRANCO);
-    hline(buff, 90, 30, 270, CORBRANCO);
-    line(buff, 90, 30, 180, 120, CORBRANCO);
-    line(buff, 180, 120, 270, 30, CORBRANCO);
-    circle(buff, 180, 60, 30, CORBRANCO);
-    vline(buff, 180, 30, 120, CORBRANCO);
+    linetriangle(buff, 90, 30, 270, 30, 180, 110, CORBRANCO);
+    circle(buff, 180, 60, 27, CORBRANCO);
+    vline(buff, 180, 30, 110, CORBRANCO);
     textprintf_ex(buff, font, 1, 1, CORBRANCO, CORPRETO, "TOGETHER THEY MAKE ONE MASTER OF DEATH");
 //    textout_centre(buff, font, "TOGETHER THEY MAKE ONE MASTER OF DEATH", 1, 1, CORBRANCO); 
 
@@ -74,5 +76,11 @@ int main(void)
 
     return EXIT_SUCCESS;
 }
-END_OF_MAIN()
+END_OF_MAIN();
 
+void linetriangle(BITMAP *bmp, int x1, int y1, int x2, int y2, int x3, int y3, int color)
+{
+    line(bmp, x1, y1, x2, y2, color);
+    line(bmp, x1, y1, x3, y3, color);
+    line(bmp, x2, y2, x3, y3, color);
+}
