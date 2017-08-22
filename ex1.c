@@ -19,7 +19,8 @@
  ***************************************************************************/
 
 /* Para compilar use:
- *     $gcc salvalle.c -o salvalle.x -Wall `allegro-config --cflags --libs`
+ *     $gcc ex1.c -o ex1.x -Wall `allegro-config --cflags --libs`
+ *     $make ex1.x
  */
 
 
@@ -35,14 +36,18 @@
 
 #define IMAGENAME "ex1.bmp" /* nome do arquivo de imagem */
 
-#define WIDTH 360
-#define HEIGHT 200
+#define WIDTH 360 /* Pixels de largura da imagem gerada */
+#define HEIGHT 200 /* Pixels de altura da imagem gerada */
 
 #include <stdio.h>
 #include <allegro.h>
 
-void linetriangle(BITMAP *bmp, int x1, int y1, int x2, int y2, int x3, int y3, int color);
+void linetriangle(BITMAP *bmp, int x1, int y1, int x2, int y2, int x3, int y3, int color); /* Cria as linhas laterais de um triangulo */
 
+/*
+ * A funcao main realizada todo o processamento principal do programa, gerando ao final um arquivo de extensao .bmp com as figuras e formados programados.
+ * Nesta versao foi criado o simbolo das reliquias da morte.
+*/
 int main(void)
 {
     BITMAP *buff;
@@ -62,11 +67,11 @@ int main(void)
         exit(EXIT_FAILURE);
     }
 
-    linetriangle(buff, 60, HEIGHT-30, 300, HEIGHT-30, 180, HEIGHT-190, CORBRANCO);
-    circle(buff, 180, HEIGHT-90, 60, CORBRANCO);
-    vline(buff, 180, HEIGHT-30, HEIGHT-190, CORBRANCO);
+    /* Onde existe HEIGHT-N (N para qualquer numero inteiro), isto se deve ao fato da relacao de Y ser invertida ao plano cartesiano. */
+    linetriangle(buff, 60, HEIGHT-30, 300, HEIGHT-30, 180, HEIGHT-190, CORBRANCO); /* A capa */
+    circle(buff, 180, HEIGHT-90, 60, CORBRANCO); /* A pedra */
+    vline(buff, 180, HEIGHT-30, HEIGHT-190, CORBRANCO); /* A varinha */
     textprintf_ex(buff, font, 1, HEIGHT-20, CORBRANCO, CORPRETO, "    TOGETHER THEY MAKE ONE MASTER OF DEATH");
-//    textout_centre(buff, font, "TOGETHER THEY MAKE ONE MASTER OF DEATH", 1, 1, CORBRANCO); 
 
     save_bitmap(IMAGENAME, buff, pal);
     destroy_bitmap(buff);
@@ -78,9 +83,14 @@ int main(void)
 }
 END_OF_MAIN();
 
+/***************************************************************************/
+/* linetriangle
+ * Funcao que cria as linhas laterais de um triangulo, baseando-se nos 3 vertices, na cor e no BITMAP recebidos.
+*/
 void linetriangle(BITMAP *bmp, int x1, int y1, int x2, int y2, int x3, int y3, int color)
 {
     line(bmp, x1, y1, x2, y2, color);
     line(bmp, x1, y1, x3, y3, color);
     line(bmp, x2, y2, x3, y3, color);
 }
+
